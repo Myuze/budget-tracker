@@ -11,7 +11,7 @@ class AuthService {
     return !!token && !this.isTokenExpired(token);
   }
 
-  isTokenExpired(token) {
+  isTokenExpired(token: string) {
     try {
       const decoded = decode(token);
       if (decoded.exp < Date.now() / 1000) {
@@ -27,7 +27,7 @@ class AuthService {
     return localStorage.getItem('id_token');
   }
 
-  login(idToken) {
+  login(idToken: string) {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
   }
