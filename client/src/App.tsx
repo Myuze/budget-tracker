@@ -1,4 +1,4 @@
-import Home from './pages/Home'
+import Home from './pages/Home';
 import './sass/App.scss';
 import {
   ApolloClient,
@@ -31,7 +31,7 @@ const client = new ApolloClient({
 export default function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="app">
+      <div className='app'>
         <Home />
       </div>
     </ApolloProvider>
