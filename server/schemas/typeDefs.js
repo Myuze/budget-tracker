@@ -10,6 +10,18 @@ const typeDefs = gql`
     password: String!
   }
 
+  type Account {
+    name: String
+    acctNum: Int
+    balance: Int
+  }
+
+  input AccountInput {
+    name: String
+    acctNum: Int
+    balance: Int
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -17,12 +29,14 @@ const typeDefs = gql`
 
   type Query {
     users: [User]!
+    accounts: [Account]!
     user(username: String!): User
     # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: User
   }
 
   type Mutation {
+    addAccount(input: AccountInput): Auth
     addUser(
       firstName: String
       lastName: String
