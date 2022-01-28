@@ -1,28 +1,34 @@
 import decode from 'jwt-decode';
 
 class AuthService {
-  // getUser(): string | null {
-  //   return decode(this.getToken());
-  // }
+  getUser() {
+    const token = this.getToken();
+    if (!token) {
+      console.log('User not Found');
+    } else {
+      return decode(token);
+    }
+  }
 
-  // loggedIn() {
-  //   // Checks if there is a saved token and it's still valid
-  //   const token = this.getToken();
-  //   return !!token && !this.isTokenExpired(token);
-  // }
+  loggedIn() {
+    // Checks if there is a saved token and it's still valid
+    const token = this.getToken();
+    return !!token && !this.isTokenExpired(token);
+  }
 
-  // isTokenExpired(token: string) {
-  //   try {
-  //     const decoded = decode(token);
-  //     if (decoded.exp < Date.now() / 1000) {
-  //       return true;
-  //     } else return false;
-  //   } catch (err) {
-  //     return false;
-  //   }
-  // }
+  isTokenExpired(token: string) {
+    try {
+      const decoded: any = decode(token);
 
-  getToken(): string | null {
+      if (decoded.exp < Date.now() / 1000) {
+        return true;
+      } else return false;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  getToken() {
     // Retrieves the user token from localStorage
     return localStorage.getItem('id_token');
   }
