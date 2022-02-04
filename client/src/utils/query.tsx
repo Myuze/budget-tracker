@@ -18,3 +18,27 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_ACCT_BY_NAME = gql`
+  query acct($name: String!) {
+    acct(name: $name) {
+      _id
+      name
+      acctNum
+      balance
+      lastTransaction
+    }
+  }
+}`;
+
+export const QUERY_ACCT_BY_NUM = gql`
+  query acct($acctNum: String!) {
+    acct(acctNum: $acctNum) {
+      _id
+      name
+      acctNum
+      balance
+      lastTransaction
+    }
+  }
+}`;

@@ -6,7 +6,7 @@ const accountSchema = new Schema(
       type: String,
     },
     acctNum: {
-      type: Number,
+      type: String,
     },
     balance: {
       type: Number,
