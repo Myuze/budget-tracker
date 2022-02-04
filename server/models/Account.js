@@ -11,6 +11,10 @@ const accountSchema = new Schema(
     balance: {
       type: Number,
     },
+    lastTransaction: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
     toJSON: {
